@@ -15,11 +15,10 @@ pipeline {
     	{
   	    docker {
           image 'centos:7'
-          args  '-v /tmp:/tmp'
         }
       }
       steps {
-          sh pwd
+          sh 'pwd'
       }
     }
     stage('Test') {
