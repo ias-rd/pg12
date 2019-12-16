@@ -5,9 +5,7 @@ pipeline {
         steps {
           sh 'echo "Connecting to the source code repository ..."'
           sh "git init /var/lib/jenkins/workspace/${env.JOB_NAME}"
-          sh "git config remote.origin.url https://github.com/postgres/postgres.git refs/heads/*:refs/remotes/origin/*"
-          sh "git fetch origin"
-          sh "git checkout REL_12_STABLE"
+          sh "git url: https://github.com/postgres/postgres.git"
         }
     }
     stage('Build') {
