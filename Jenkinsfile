@@ -6,8 +6,8 @@ pipeline {
         sh 'echo "Connecting to the source code repository ..."'
         sh "git init /var/lib/jenkins/workspace/${env.JOB_NAME}"
         sh "git fetch --tags --progress https://github.com/postgres/postgres.git +refs/heads/*:refs/remotes/origin/*"
-        sh "git branch -d REL_12_1"
-        sh "git checkout -b REL_12_1"
+        sh "git branch -d REL_12_STABLE"
+        sh "git checkout -b REL_12_STABLE"
       }
     }
     stage('Build') {
