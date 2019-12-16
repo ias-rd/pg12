@@ -5,8 +5,11 @@ pipeline {
         steps {
           sh 'echo "Connecting to the source code repository ..."'
           sh "git init /var/lib/jenkins/workspace/${env.JOB_NAME}"
-          sh "git url: https://github.com/postgres/postgres.git"
+          sh "git fetch --tags --progress https://github.com/postgres/postgres.git +refs/heads/*:refs/remotes/origin/*"
+          sh "git branch -d REL_12_STABLE"
+          SH "git checkout -b REL_12_STABLE"
         }
+      }
     }
     stage('Build') {
       agent
